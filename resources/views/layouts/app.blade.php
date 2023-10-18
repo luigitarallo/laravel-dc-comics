@@ -7,7 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ env('APP_NAME') }}</title>
 
-  <!-- Styles -->
+  @yield('css')
+
+  <!-- Assets JS/CSS -->
   @vite('resources/js/app.js')
 </head>
 
