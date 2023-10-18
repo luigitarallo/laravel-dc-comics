@@ -7,6 +7,9 @@
 @section('main-content')
 <div class="container">
 <h1>Comics List</h1>
+<div class='container'>
+    <a href="{{route('comics.create')}}" class="btn btn-primary">Add New Comic</a>
+</div>
 <table class="table">
     <thead>
       <tr>
@@ -19,6 +22,8 @@
         <th scope="col">Type</th>
         <th scope="col">Creation</th>
         <th scope="col">Last Update</th>
+        <th scope="col"></th>
+
       </tr>
     </thead>
     <tbody>
@@ -35,7 +40,7 @@
           <td>{{$comic->updated_at}}</td>
           <td>
             <a href="{{route('comics.show', $comic)}}">
-                <i class="fa-solid fa-pencil"></i></td>
+                <i class="fa-regular fa-eye"></i></td>
             </a>
 
         </tr>
