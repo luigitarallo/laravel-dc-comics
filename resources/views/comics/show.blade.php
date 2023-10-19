@@ -3,7 +3,10 @@
 @section('main-content')
 
 <div class="container ">
-    <div class="card my-5" style="max-width: 100%;">
+  <a href="{{route('comics.index')}}" class="btn btn-primary">Back to Comics List</a>
+  <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning">Edit Comic</a>
+
+    <div class="card my-3" style="max-width: 100%;">
         <div class="row g-0">
           <div class="col-md-3">
             <img src="{{$comic->thumb}}" class="img-fluid rounded-start" alt="comic image">
