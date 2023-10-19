@@ -41,12 +41,21 @@
           <td>
             <div class="d-flex">
               <a href="{{route('comics.show', $comic)}}" class="mx-1">
-                  <i class="fa-regular fa-eye"></i></td>
+                  <i class="fa-regular fa-eye"></i>
               </a>
               <a href="{{route('comics.edit', $comic)}}" class="mx-1">
                 <i class="fa-solid fa-pencil"></i>
               </a>
+              <form action="{{route('comics.destroy', $comic)}}" method="POST" class="mx-1">
+                @csrf
+                @method('DELETE')
+                <button>
+                  <i class="fa-solid fa-trash text-danger"></i>  
+                </button>
+              </form>
+             
             </div>
+          </td>
         </tr>
         @endforeach
     </tbody>
