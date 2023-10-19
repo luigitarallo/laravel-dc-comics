@@ -46,14 +46,33 @@
               <a href="{{route('comics.edit', $comic)}}" class="mx-1">
                 <i class="fa-solid fa-pencil"></i>
               </a>
-              <form action="{{route('comics.destroy', $comic)}}" method="POST" class="mx-1">
-                @csrf
-                @method('DELETE')
-                <button>
-                  <i class="fa-solid fa-trash text-danger"></i>  
-                </button>
-              </form>
-             
+              <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal-{{$comic->id}}" class="mx-1">
+                <i class="fa-solid fa-trash text-danger"></i>  
+              </a>
+              <div class="modal fade" id="delete-modal-{{$comic->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Comic</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure? Do you want to delete the comic: "{{$comic->title}}"?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retry</button>
+                      
+                      <form action="{{route('comics.destroy', $comic)}}" method="POST" class="mx-1">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger">
+                      Confirm
+                      </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </td>
         </tr>
