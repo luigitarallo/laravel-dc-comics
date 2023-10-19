@@ -3,7 +3,7 @@
 @section('main-content')
 <div class='container'>
     <a href="{{route('comics.index')}}" class="btn btn-primary">Back to Comics List</a>
-    <a href="{{route('comics.show', $comic)}}" class="btn btn-warning">Back to Comic Details</a>
+    <a href="{{route('comics.show', $comic)}}" class="btn btn-success">Back to Comic Details</a>
 
     <h1>Edit Comic</h1>
     <form action="{{route('comics.update', $comic)}}" method="POST" class="row g-3">

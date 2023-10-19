@@ -39,10 +39,14 @@
           <td>{{$comic->created_at}}</td>
           <td>{{$comic->updated_at}}</td>
           <td>
-            <a href="{{route('comics.show', $comic)}}">
-                <i class="fa-regular fa-eye"></i></td>
-            </a>
-
+            <div class="d-flex">
+              <a href="{{route('comics.show', $comic)}}" class="mx-1">
+                  <i class="fa-regular fa-eye"></i></td>
+              </a>
+              <a href="{{route('comics.edit', $comic)}}" class="mx-1">
+                <i class="fa-solid fa-pencil"></i>
+              </a>
+            </div>
         </tr>
         @endforeach
     </tbody>
