@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -37,6 +38,46 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        Validator::make(
+            $data,
+            [
+                'title' => 'required|string|max:50',
+                'description' => 'required|string',
+                'thumb' => 'required|url',
+                'price' => 'required|string|max:8',
+                'series' => 'required|string|max:50',
+                'sale_date' => 'required|string|max:12',
+                'type' => 'required|string|max:20',
+            ],
+            [
+                'title.required' => 'You have to set a comic title',
+                'title.string' => 'Title must be a string',
+                'title.max' => 'Title can\'t exceed 50 characters',
+
+                'description.required' => 'You have to set a comic description',
+                'description.string' => 'You must be a string',
+
+                'thumb.required' => 'You have to set a comic url image',
+                'thumb.url' => 'Insert a valid url',
+
+                'price.required' => 'You have to set a comic price',
+                'price.string' => 'Price must be a string',
+                'price.max' => 'Price it\'s limited to 8 chars',
+
+                'series.required' => 'You have to set a comic series',
+                'series.string' => 'Series must be a string',
+                'series.max' => 'Series can\'t excede 50 characters',
+
+                'sale_date.required' => 'You have to set a comic sales date',
+                'sale_date.string' => 'Sales date must be a string',
+                'sale_date.max' => 'Sales date can\'t excede 12 characters',
+
+                'type.required' => 'You have to set a comic type',
+                'type.string' => 'Type must be a string',
+                'type.max' => 'Type can\'t excede 20 characters',
+            ]
+        )->validate();
+
         $comic = new Comic();
         $comic->fill($data);
         $comic->save();
