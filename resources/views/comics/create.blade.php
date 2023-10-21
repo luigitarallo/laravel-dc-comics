@@ -20,9 +20,9 @@
             <label for="title">Title</label>
             <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" >
             @error('title')
-<div class="invalid-feedback">
-    {{$message}}
-</div>
+    	    <div class="invalid-feedback">
+                {{$message}}
+            </div>
             @enderror
         </div>
         <div class="col-4">
@@ -32,7 +32,7 @@
             <div class="invalid-feedback">
                 {{$message}}
             </div>
-                        @enderror
+            @enderror
         </div>
         <div class="col-4">
             <label for="type">Type</label>
@@ -41,7 +41,7 @@
             <div class="invalid-feedback">
                 {{$message}}
             </div>
-                        @enderror
+            @enderror
         </div>
         <div class="col-4">
             <label for="price">Price</label>
@@ -50,7 +50,7 @@
             <div class="invalid-feedback">
                 {{$message}}
             </div>
-                        @enderror
+            @enderror
         </div>
         <div class="col-4">
             <label for="sale_date">Sale Date</label>
@@ -59,7 +59,7 @@
             <div class="invalid-feedback">
                 {{$message}}
             </div>
-                        @enderror
+            @enderror
         </div>
         <div class="col-4">
             <label for="thumb">Image</label>
@@ -68,16 +68,16 @@
             <div class="invalid-feedback">
                 {{$message}}
             </div>
-                        @enderror
+            @enderror
         </div>
         <div class="col-12">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}"></textarea>
+            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" >{{old('description')}}</textarea>
             @error('description')
             <div class="invalid-feedback">
                 {{$message}}
             </div>
-                        @enderror
+            @enderror
         </div>
         <div>
             <button class="btn btn-danger">Save</button>
