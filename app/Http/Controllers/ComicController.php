@@ -11,7 +11,7 @@ class ComicController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * *@return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -33,11 +33,70 @@ class ComicController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * *@return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $data = $request->all();
+        $this->validation($data);
+
+        $comic = new Comic();
+        $comic->fill($data);
+        $comic->save();
+        return redirect()->route('comics.show', $comic);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Comic $comic)
+    {
+        return view('comics.show', compact('comic'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Comic $comic)
+    {
+        return view('comics.edit', compact('comic'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Comic $comic)
+    {
+        $data = $request->all();
+        $this->validation($data);
+        $comic->update($data);
+        return redirect()->route('comics.show', $comic);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Comic $comic)
+    {
+        $comic->delete();
+        return redirect()->route('comics.index');
+    }
+
+    private function validation($data)
+    {
         Validator::make(
             $data,
             [
@@ -78,57 +137,5 @@ class ComicController extends Controller
             ]
         )->validate();
 
-        $comic = new Comic();
-        $comic->fill($data);
-        $comic->save();
-        return redirect()->route('comics.show', $comic);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * *@return \Illuminate\Http\Response
-     */
-    public function show(Comic $comic)
-    {
-        return view('comics.show', compact('comic'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * *@return \Illuminate\Http\Response
-     */
-    public function edit(Comic $comic)
-    {
-        return view('comics.edit', compact('comic'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * *@return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Comic $comic)
-    {
-        $data = $request->all();
-        $comic->update($data);
-        return redirect()->route('comics.show', $comic);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * *@return \Illuminate\Http\Response
-     */
-    public function destroy(Comic $comic)
-    {
-        $comic->delete();
-        return redirect()->route('comics.index');
     }
 }
