@@ -3,6 +3,7 @@
 @section('main-content')
 
 <div class="container ">
+  {{-- Buttons to navigate --}}
   <a href="{{route('comics.index')}}" class="btn btn-primary">Back to Comics List</a>
   <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning">Edit Comic</a>
 

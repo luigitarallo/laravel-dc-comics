@@ -2,10 +2,12 @@
 
 @section('main-content')
 <div class='container'>
+    {{-- Buttons to navigate --}}
     <a href="{{route('comics.index')}}" class="btn btn-primary">Back to Comics List</a>
     <a href="{{route('comics.show', $comic)}}" class="btn btn-success">Back to Comic Details</a>
 
     <h1>Edit Comic</h1>
+    {{-- Conditions to display errors --}}
     @if($errors->any())
     <h2>Correct following errors:</h2>
     <ul>
@@ -17,11 +19,14 @@
 
 
     <form action="{{route('comics.update', $comic)}}" method="POST" class="row g-3">
+        {{-- Token --}}
         @csrf
+        {{-- Method to use instead POST --}}
         @method('PUT')
         <div class="col-4">
             <label for="title">Title</label>
             <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title') ?? $comic->title}}">
+            {{-- To display error --}}
             @error('title')
     	    <div class="invalid-feedback">
                 {{$message}}
