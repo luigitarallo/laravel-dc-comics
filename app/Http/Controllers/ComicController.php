@@ -15,6 +15,7 @@ class ComicController extends Controller
      */
     public function index()
     {
+        // * GET all datas in var and return to view 
         $comics = Comic::all();
         return response(view('comics.index', compact('comics')));
     }
@@ -22,11 +23,11 @@ class ComicController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * *@return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('comics.create');
+        return response(view('comics.create'));
     }
 
     /**
@@ -44,6 +45,7 @@ class ComicController extends Controller
         $comic->fill($data);
         $comic->save();
         return response(redirect()->route('comics.show', $comic)
+            // * To add flash messages
             ->with('message', 'Comic saved succesfully!')
             ->with('message_type', 'success'));
     }
@@ -83,6 +85,7 @@ class ComicController extends Controller
         $this->validation($data);
         $comic->update($data);
         return response(redirect()->route('comics.show', $comic)
+            // * To add flash messages
             ->with('message', 'Comic edited succesfully!')
             ->with('message_type', 'success'));
     }
@@ -96,7 +99,9 @@ class ComicController extends Controller
     public function destroy(Comic $comic)
     {
         $comic->delete();
+        // * Redirect to index
         return response(redirect()->route('comics.index')
+            // * To add flash messages
             ->with('message', 'Comic deleted succesfully!')
             ->with('message_type', 'danger'));
 
@@ -105,7 +110,9 @@ class ComicController extends Controller
     private function validation($data)
     {
         Validator::make(
+            // Data to validate
             $data,
+            // * Keys with value type for validation
             [
                 'title' => 'required|string|max:50',
                 'description' => 'required|string',
@@ -115,6 +122,7 @@ class ComicController extends Controller
                 'sale_date' => 'required|string|max:12',
                 'type' => 'required|string|max:20',
             ],
+            // * Error messages
             [
                 'title.required' => 'You have to set a comic title',
                 'title.string' => 'Title must be a string',
