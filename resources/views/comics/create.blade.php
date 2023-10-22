@@ -19,7 +19,7 @@
         <div class="col-4">
             <label for="title">Title</label>
             <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" >
-            {{-- * For printing print error --}}
+            {{-- * For printing errors --}}
             @error('title')
     	    <div class="invalid-feedback">
                 {{$message}}
