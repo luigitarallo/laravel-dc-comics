@@ -10,7 +10,7 @@
 <div class='container'>
     <a href="{{route('comics.create')}}" class="btn btn-primary">Add New Comic</a>
 </div>
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th scope="col">Id</th>
