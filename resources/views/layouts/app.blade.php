@@ -15,6 +15,7 @@
 
 <body>
   @include('partials._navbar')
+  @include('partials._flash-message')
 
   <main>
     @yield('main-content')
