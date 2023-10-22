@@ -7,7 +7,7 @@
     <a href="{{route('comics.show', $comic)}}" class="btn btn-success">Back to Comic Details</a>
 
     <h1>Edit Comic</h1>
-    {{-- Conditions to display errors --}}
+    {{-- * Conditions to display errors --}}
     @if($errors->any())
     <h2>Correct following errors:</h2>
     <ul>
@@ -26,7 +26,7 @@
         <div class="col-4">
             <label for="title">Title</label>
             <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title') ?? $comic->title}}">
-            {{-- To display error --}}
+            {{-- * For printing errors --}}
             @error('title')
     	    <div class="invalid-feedback">
                 {{$message}}

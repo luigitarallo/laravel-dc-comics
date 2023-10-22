@@ -4,7 +4,7 @@
 <div class='container'>
     <a href="{{route('comics.index')}}" class="btn btn-primary">Back to Comics List</a>
     <h1>Insert a new comic</h1>
-
+{{-- * Conditions for printing errors --}}
 @if($errors->any())
 <h2>Correct following errors:</h2>
 <ul>
@@ -19,6 +19,7 @@
         <div class="col-4">
             <label for="title">Title</label>
             <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" >
+            {{-- * For printing print error --}}
             @error('title')
     	    <div class="invalid-feedback">
                 {{$message}}

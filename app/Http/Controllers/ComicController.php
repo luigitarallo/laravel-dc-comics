@@ -15,7 +15,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        // * GET all datas in var and return to view 
+        // * GET all data in a var and return to view 
         $comics = Comic::all();
         return response(view('comics.index', compact('comics')));
     }
